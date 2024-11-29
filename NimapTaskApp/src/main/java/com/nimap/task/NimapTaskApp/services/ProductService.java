@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductRepo repo;
-    // This Service Page
+    // This Service Pages
     public List<Product> getProduct(){
         return repo.findAll();
     }
