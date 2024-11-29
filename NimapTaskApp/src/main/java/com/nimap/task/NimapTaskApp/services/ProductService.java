@@ -15,14 +15,11 @@ public class ProductService {
     @Autowired
     ProductRepo repo;
 
-    // This Service Pages
+    // This Service Pages:
 
     public Page<Product> getProduct(Pageable pageable) {
         return repo.findAll(pageable);
     }
-
-
-
 
     public Product saveProductItems(Product category){
 
