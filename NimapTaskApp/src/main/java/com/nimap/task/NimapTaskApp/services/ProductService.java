@@ -4,6 +4,8 @@ import com.nimap.task.NimapTaskApp.model.Category;
 import com.nimap.task.NimapTaskApp.model.Product;
 import com.nimap.task.NimapTaskApp.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +14,19 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductRepo repo;
+
     // This Service Pages
-    public List<Product> getProduct(){
-        return repo.findAll();
+
+    public Page<Product> getProduct(Pageable pageable) {
+        return repo.findAll(pageable);
     }
-    public String saveProductItems(Product category){
-                repo.save(category);
-                return "success";
+
+
+
+
+    public Product saveProductItems(Product category){
+
+        return repo.save(category);
     }
 
     public Product getProductById(int Id){

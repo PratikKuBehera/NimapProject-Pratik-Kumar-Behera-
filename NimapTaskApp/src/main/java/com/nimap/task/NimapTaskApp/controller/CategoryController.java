@@ -3,6 +3,8 @@ package com.nimap.task.NimapTaskApp.controller;
 import com.nimap.task.NimapTaskApp.model.Category;
 import com.nimap.task.NimapTaskApp.services.CategorySevice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +19,18 @@ public class CategoryController {
     @Autowired
     CategorySevice  service;
 
+
     @GetMapping("/categories")
-    public List<Category> getAllCategory(){
-        return service.getCategory();
+    public ResponseEntity<Page<Category>> getCategories(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size) {
+
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Category> categories = service.getCategory(pageRequest);
+
+        return ResponseEntity.ok(categories);
     }
+
 
     @PostMapping("/categories")
     public void createCategoryItems(@RequestBody Category category){

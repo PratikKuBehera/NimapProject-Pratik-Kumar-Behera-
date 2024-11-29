@@ -2,13 +2,16 @@ package com.nimap.task.NimapTaskApp.controller;
 
 import com.nimap.task.NimapTaskApp.model.Category;
 import com.nimap.task.NimapTaskApp.model.Product;
+import com.nimap.task.NimapTaskApp.repository.CategoryRepo;
 import com.nimap.task.NimapTaskApp.services.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,15 +21,28 @@ public class ProductController {
     @Autowired
     ProductService service;
 
+    @Autowired
+    CategoryRepo categoryRepo ;
+
 
     @GetMapping("/products")
-    public List<Product> getAllProducts(){
-        return service.getProduct();
+    public ResponseEntity<Page<Product>> getAllProduct(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                     @RequestParam(value = "size", defaultValue = "10") int size) {
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<Product> products = service.getProduct(pageable);
+        return ResponseEntity.ok(products);
     }
 
+
     @PostMapping("/products")
-    public String createProductItems(@RequestBody Product product){
-       return service.saveProductItems(product);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+
+        Category category = categoryRepo.findById(product.getCategory().getcId())
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        product.setCategory(category);
+
+        Product savedProduct = service.saveProductItems(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
 
 

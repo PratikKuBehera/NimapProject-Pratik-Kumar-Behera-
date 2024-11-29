@@ -27,7 +27,7 @@ public class Product {
 
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false )
+    @JoinColumn(name = "category_id",referencedColumnName = "cId", nullable = false )
     private Category category;
 
     public Category getCategory() {
