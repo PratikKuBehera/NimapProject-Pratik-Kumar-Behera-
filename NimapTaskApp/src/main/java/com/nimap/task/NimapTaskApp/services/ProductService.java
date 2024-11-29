@@ -10,10 +10,9 @@ import java.util.List;
 
 @Service
 public class ProductService {
-
     @Autowired
     ProductRepo repo;
-
+    // This Service Page
     public List<Product> getProduct(){
         return repo.findAll();
     }
