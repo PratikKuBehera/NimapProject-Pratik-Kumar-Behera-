@@ -15,10 +15,6 @@ public class CategorySevice {
     @Autowired
     CategoryRepo repo;
 
-//    public List<Category> getCategory(){
-//        return repo.findAll();
-//    }
-
     public Page<Category> getCategory(Pageable pageable) {
         return repo.findAll(pageable);
     }

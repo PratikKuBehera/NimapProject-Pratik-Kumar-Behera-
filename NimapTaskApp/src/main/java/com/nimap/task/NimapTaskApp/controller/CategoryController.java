@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -33,13 +34,20 @@ public class CategoryController {
 
 
     @PostMapping("/categories")
-    public void createCategoryItems(@RequestBody Category category){
-        service.saveCategoryItems(category);
+    public ResponseEntity<Category> createCategoryItems(@RequestBody Category category) {
+        Category savedCategory = service.saveCategoryItems(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCategory);
     }
 
+
     @GetMapping("/categories/{id}")
-    public Category getById(@PathVariable int id){
-        return service.getCategoryById(id);
+    public ResponseEntity<?> getById(@PathVariable int id) {
+        try {
+            Category category = service.getCategoryById(id);
+            return ResponseEntity.ok(category);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category not found with ID: " + id);
+        }
     }
 
 
