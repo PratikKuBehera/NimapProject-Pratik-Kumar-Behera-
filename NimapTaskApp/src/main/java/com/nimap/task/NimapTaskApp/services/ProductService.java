@@ -8,14 +8,28 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+/*
+  The ProductService class is a service component in the Spring Boot application, responsible for
+  handling the business logic related to the Product entity.
+  It interacts with the ProductRepo to perform CRUD (Create, Read, Update, Delete)
+  operations and supports pagination for retrieving products.
+
+  The @Autowired annotation in Spring is used for dependency injection.
+  In this case, it injects the ProductRepo bean into the ProductService class.
+  This allows the ProductService to access the ProductRepo's methods, such as save(), findAll(), findById(), deleteById()
+  for interacting with the database.
+
+ */
+
+/*
+    Please move to ProductController to see the implementation.
+ */
 
 @Service
 public class ProductService {
     @Autowired
     ProductRepo repo;
 
-    // This Service Pages:
 
     public Page<Product> getProduct(Pageable pageable) {
         return repo.findAll(pageable);

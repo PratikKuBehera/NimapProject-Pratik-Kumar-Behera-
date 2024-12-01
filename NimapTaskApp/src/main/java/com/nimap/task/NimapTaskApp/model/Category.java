@@ -8,6 +8,23 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+/*
+  There I am using the traditional way to create Entity class(POJO_CLASS -Plane Old Java Object)
+  but we can also use the Lombok to create @Setter , @Getter , @@NoArgsConstructor,
+  @AllArgsConstructor , @ToString.
+
+  **Category**
+  This @Entity class has Columns(cId , cName , cDescription) and the Table Name = Category.
+
+  This Class has a ManyToOne relationship with the Product @Entity class.
+
+ */
 @Entity
 @Table(name="Category")
 public class Category {

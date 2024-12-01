@@ -1,24 +1,36 @@
 package com.nimap.task.NimapTaskApp.controller;
 
 import com.nimap.task.NimapTaskApp.model.Category;
-import com.nimap.task.NimapTaskApp.services.CategorySevice;
+import com.nimap.task.NimapTaskApp.services.categoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+
+/*
+   The CategoryController class is a Spring REST controller it is responsible for exposing API endpoints related to Category entities.
+   It interacts with the CategoryService to perform CRUD (Create, Read, Update, Delete) operations on Category objects and
+   returns the appropriate HTTP responses.
+
+   @Autowired is used for dependency injection in Spring, allowing automatic injection of required dependencies.
+   In CategoryController, it injects CategoryService to handle business logic. This decouples the controller from the service,
+   promoting better structure, flexibility, and easier testing and maintenance, with dependencies managed by the Spring context.
+ */
+
+
+
 
 @RestController
 @RequestMapping("/api")
 public class CategoryController {
 
     @Autowired
-    CategorySevice  service;
+    categoryService service;
 
 
     @GetMapping("/categories")

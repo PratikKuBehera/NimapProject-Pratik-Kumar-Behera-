@@ -3,6 +3,22 @@ package com.nimap.task.NimapTaskApp.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@ToString
+/*
+  There I am using the traditional way to create Entity class(POJO_CLASS -Plane Old Java Object)
+  but we can also use the Lombok to create @Setter , @Getter , @@NoArgsConstructor,
+  @AllArgsConstructor , @ToString.
+
+  **Product**
+  This @Entity class has Columns(pId , pName , pDescription , pPrice , pQuantity) and the Table Name = Product.
+
+  This Class has a OneToMany relationship with the Category @Entity class.
+
+ */
 
 @Entity
 @Table(name="Product")

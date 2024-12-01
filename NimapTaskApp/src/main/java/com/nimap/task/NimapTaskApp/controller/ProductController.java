@@ -4,15 +4,25 @@ import com.nimap.task.NimapTaskApp.model.Category;
 import com.nimap.task.NimapTaskApp.model.Product;
 import com.nimap.task.NimapTaskApp.repository.CategoryRepo;
 import com.nimap.task.NimapTaskApp.services.ProductService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
+
+/*
+   The ProductController class is responsible for handling HTTP requests related to product operations.
+   It interacts with the ProductService to manage business logic and the CategoryRepo to associate products with categories.
+   The class includes endpoints for creating, retrieving, updating, and deleting products.
+
+   @Autowired is used to inject the ProductService and CategoryRepo dependencies into the controller.
+   This allows Spring to automatically manage and provide the necessary service and repository instances at runtime.
+   This eliminates the need for manual instantiation and ensures better code maintainability.
+ */
+
+
 
 @RestController
 @RequestMapping("/api")
@@ -23,6 +33,7 @@ public class ProductController {
 
     @Autowired
     CategoryRepo categoryRepo ;
+
 
     @GetMapping("/products")
     public ResponseEntity<Page<Product>> getAllProduct(@RequestParam(value = "page", defaultValue = "0") int page,
