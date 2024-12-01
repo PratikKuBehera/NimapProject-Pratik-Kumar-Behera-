@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
    Some of builtin methods that has been used here to achieve the project
    requirements are :
    * findAll() --> This is used to get all the recodes from the database.
-   * save() --> This is used to save a new recode is inserted.
+   * save() --> This is used to save a new records is inserted.
    * findById() --> This is used to find a specific category on the bases of Id.
    * deleteById() --> This method is used to perform delete operation on the bases of Id.
 
