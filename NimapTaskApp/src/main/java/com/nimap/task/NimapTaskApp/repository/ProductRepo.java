@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
    And save() method is also used to update a particular category  on the bases of Id.
 
-   These are some operations are perform in the ProductRepo class achieve the goal of the project.
+   These are some operations which are perform to achieve the goal of the project.
  */
 /*
    Please move to the service class( ProductService ) to see the implementation of all  the methods.
