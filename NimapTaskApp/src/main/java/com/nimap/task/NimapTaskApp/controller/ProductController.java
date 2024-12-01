@@ -69,11 +69,11 @@ public class ProductController {
 
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<?> updateCategories(@PathVariable int id, @RequestBody Product product) {
-        Optional<Product> updateCategory = Optional.ofNullable(service.getProductById(id));
+    public ResponseEntity<?> updateProducts(@PathVariable int id, @RequestBody Product product) {
+        Optional<Product> updateProduct = Optional.ofNullable(service.getProductById(id));
 
-        if (updateCategory.isPresent()) {
-            Product products = updateCategory.get();
+        if (updateProduct.isPresent()) {
+            Product products = updateProduct.get();
             products.setpName(product.getpName());
             products.setpDescription(product.getpDescription());
             products.setpPrice(product.getpPrice());
