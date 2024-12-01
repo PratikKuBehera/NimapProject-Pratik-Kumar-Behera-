@@ -16,14 +16,16 @@ import java.util.List;
 //@ToString
 /*
   There I am using the traditional way to create Entity class(POJO_CLASS -Plane Old Java Object)
-  but we can also use the Lombok to create @Setter , @Getter , @@NoArgsConstructor,
+  but we can also use the Lombok to create @Setter , @Getter , @NoArgsConstructor,
   @AllArgsConstructor , @ToString.
 
   **Category**
   This @Entity class has Columns(cId , cName , cDescription) and the Table Name = Category.
-
   This Class has a ManyToOne relationship with the Product @Entity class.
+ */
 
+/*
+  Please move to Product Entity class , CategoryRepo interface  or CategoryService class to see the implementation.
  */
 @Entity
 @Table(name="Category")

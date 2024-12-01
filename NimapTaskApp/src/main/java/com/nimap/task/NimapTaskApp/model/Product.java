@@ -10,14 +10,15 @@ import jakarta.persistence.*;
 //@ToString
 /*
   There I am using the traditional way to create Entity class(POJO_CLASS -Plane Old Java Object)
-  but we can also use the Lombok to create @Setter , @Getter , @@NoArgsConstructor,
+  but we can also use the Lombok to create @Setter , @Getter , @NoArgsConstructor,
   @AllArgsConstructor , @ToString.
 
   **Product**
   This @Entity class has Columns(pId , pName , pDescription , pPrice , pQuantity) and the Table Name = Product.
-
   This Class has a OneToMany relationship with the Category @Entity class.
-
+ */
+/*
+  Please move to ProductRepo interface  or ProductService class to see the implementation.
  */
 
 @Entity
